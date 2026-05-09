@@ -1,24 +1,25 @@
-// Vetor de dados (Banco de dados simulado)
+// Simulação de um sistema de login com regras de negócio - Desafio proposto para validação de testes unitários utilizando Mocha e Assert.
+//Declare um vetor contendo informações sobre usuários de um site, contendo as propriedades: id, nome, email, senha e expirado (boleano, pode ser true ou false). 
+// Adicione ao menos um dos usuarios como expirado sendo true.
+
+
 const usuarios = [
-    { email: 'sucesso@teste.com', senha: '123', expirado: false },
-    { email: 'expirado@teste.com', senha: '123', expirado: true },
-    { email: 'senhaerrada@teste.com', senha: '123', expirado: false }
+    { id: 1, nome: 'João', email: 'sucesso@teste.com', senha: '123', expirado: false },
+    { id: 2, nome: 'Ana', email: 'credencial@expirada.com', senha: '123', expirado: true },
+    { id: 3, nome: 'Bia', email: 'senhaerrada@teste.com', senha: '123', expirado: false }
 ];
 
-/**
- * Realiza a lógica de login baseada no vetor de usuários.
- */
 function realizarLogin(email, senha) {
     const usuario = usuarios.find(u => u.email === email);
 
-    // Regra: Usuário não existe ou Senha incorreta
+    // Regra: Credenciais incorretas (Email não existe ou senha errada)
     if (!usuario || usuario.senha !== senha) {
         throw new Error('As credenciais estão incorretas');
     }
 
     // Regra: Credenciais expiradas
     if (usuario.expirado) {
-        throw new Error('As credenciais expiraram');
+        throw new Error('Renove suas credenciais');
     }
 
     return 'Login realizado com sucesso';

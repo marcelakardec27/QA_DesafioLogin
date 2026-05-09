@@ -1,36 +1,37 @@
+// Escreva 4 testes: 1) Sucesso, 2) Credencial expirada, 3) Usuario não encontrado e 4) Senha incorreta para o usuário encontrado.
+
 const assert = require('assert');
 const { realizarLogin } = require('../src/Login');
 
-describe('Testes da Função realizarLogin', function() {
+describe('Testes de Login', function() {
 
-    // 1) Teste de Sucesso
-    it('Deve retornar sucesso quando email e senha estiverem corretos', function() {
+    // 1) Sucesso
+    it('Deve retornar "Login realizado com sucesso"', function() {
         const resultado = realizarLogin('sucesso@teste.com', '123');
         assert.strictEqual(resultado, 'Login realizado com sucesso');
     });
 
-    // 2) Teste de Credencial Expirada
-    it('Deve lançar erro quando as credenciais estiverem expiradas', function() {
+    // 2) Credencial expirada
+    it('Deve retornar "Renove suas credenciais" para usuário expirado', function() {
         assert.throws(
-            () => realizarLogin('expirado@teste.com', '123'),
-            { message: 'As credenciais expiraram' }
+            () => realizarLogin('credencial@expirada.com', '123'),
+            { message: 'Renove suas credenciais' }
         );
     });
 
-    // 3) Teste de Usuário não encontrado
-    it('Deve lançar erro quando o email não existir no sistema', function() {
+    // 3) Usuário não encontrado
+    it('Deve retornar "As credenciais estão incorretas" para email inexistente', function() {
         assert.throws(
-            () => realizarLogin('naoexiste@teste.com', '123'),
+            () => realizarLogin('naoexiste@email.com', '123'),
             { message: 'As credenciais estão incorretas' }
         );
     });
 
-    // 4) Teste de Senha incorreta para usuário existente
-    it('Deve lançar erro quando a senha estiver incorreta para um email válido', function() {
+    // 4) Senha incorreta para usuário encontrado
+    it('Deve retornar "As credenciais estão incorretas" para senha errada', function() {
         assert.throws(
-            () => realizarLogin('senhaerrada@teste.com', 'senha_errada'),
+            () => realizarLogin('sucesso@teste.com', 'senha_errada'),
             { message: 'As credenciais estão incorretas' }
         );
     });
-
 });
