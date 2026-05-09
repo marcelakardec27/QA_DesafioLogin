@@ -1,0 +1,24 @@
+{
+  "name": "qa_desafiologin",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marcelakardec27/QA_DesafioLogin.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/marcelakardec27/QA_DesafioLogin/issues"
+  },
+  "homepage": "https://github.com/marcelakardec27/QA_DesafioLogin#readme",
+  "dependencies": {
+    "mocha": "^11.7.5"
+  }
+}
